@@ -35,7 +35,7 @@ Open browser on the page
 # Завершаем тест
 Finish the test
     # Закрываем браузер и завершаем тест.
-    [Teardown]    Close Browser
+    Close Browser
     Sleep   2
 
 

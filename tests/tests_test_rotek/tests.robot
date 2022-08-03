@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Tests test Rotek.
 # Подключаем файл с основными переменными и ключевыми словами из папки ${EXECDIR}${/}resources/.
-Resource        ${EXECDIR}${/}resources/functional_tests/resources.robot    # Ключевые слова, для данных автотестов.
+Resource        ../../resources/functional_tests/resources.robot    # Ключевые слова, для данных автотестов.
 # Прописываем примерные default-теги, для запуска данного теста(ов), в каких-либо тестовых наборах.
 Default Tags    Smoke  Regression  Sanitaze  No_parallel
 Test Setup      Open browser on the page      ${url_ui}      ${browser}  # Открываем браузер на странице переводчика google. Определяем тип браузера в котором будет произв. проверка. Прописывается в аргум. запуска: --variable BROWSER:chrome.

@@ -4,6 +4,8 @@ Documentation   Tests test Rotek.
 Resource        ${EXECDIR}${/}resources/functional_tests/resources.robot    # Ключевые слова, для данных автотестов.
 # Прописываем примерные default-теги, для запуска данного теста(ов), в каких-либо тестовых наборах.
 Default Tags    Smoke  Regression  Sanitaze  No_parallel
+Test Setup      Open browser on the page      ${url_ui}      ${browser}  # Открываем браузер на странице переводчика google. Определяем тип браузера в котором будет произв. проверка. Прописывается в аргум. запуска: --variable BROWSER:chrome.
+Test Teardown   Finish the test     # Заканчиваем тест и закрываем браузер.
 
 
 
@@ -22,8 +24,6 @@ Default Tags    Smoke  Regression  Sanitaze  No_parallel
 
 Check google translate
     [Arguments]     ${url}    ${incorrect_word}   ${right_english_word}
-    # Открываем браузер на странице переводчика google.
-    Open browser on the page      ${url}      ${browser}  # Определяет тип браузера в котором будет произв. проверка. Прописывается в аргум. запуска: --variable BROWSER:chrome.
 
     # Создаем переменную с текстом ошибки, если проверка в данном ключевом слове не отработала. Для отправления этого текста в слак.
     Set Suite Variable      ${text_message}    на страничке не отработали 1 или 2 проверки.
@@ -52,12 +52,13 @@ Check google translate
     Should be equal    ${translated_text_from_box_on_right}     ${right_english_word}      msg=Текст в поле справа отличается от слова "Мир"!
     log to console     Переведенный текст из поля справа, равен ожидаемому, переданному в аргументах запуска теста.
 
+    Go to   ${url}
+
     # Если данное ключевое слово отработало без ошибок, создаем переменную ${success} со значением True, для продолжения тестов.
     # Можно использовать, если тест-кейсов в наборе, больше одного и они связаны одним сценарием.
     ${success} =    Set Variable    True
     [Return]    ${success}
 
-    # Заканчиваем тест и закрываем браузер.
-    Finish the test
+
 
 

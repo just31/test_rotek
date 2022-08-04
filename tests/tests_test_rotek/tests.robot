@@ -26,7 +26,7 @@ Test Teardown   Finish the test     # Заканчиваем тест и зак�
     ${items}    Get Dictionary Items   ${words}     sort_keys=False
 
      # Производим в цикле FOR мульти-проверку переводчика гугл, с входными данными из словаря ${words}.
-    FOR    ${right_word_words}    ${incorrect_word_words}    I    @{items}
+    FOR    ${right_word_words}    ${incorrect_word_words}    IN    @{items}
          Check google translate        ${url_auto}    ${incorrect_word_words}   ${right_word_words}
     END
 

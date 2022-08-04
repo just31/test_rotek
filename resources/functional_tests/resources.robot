@@ -12,8 +12,9 @@ Library         RequestsLibrary
 Library         DateTime
 Library         String
 Library         ../../Library/SeleniumLibraryHelper.py
-# Подключаем общие для всех тестов, page object переменные.
+# Подключаем общие для всех тестов, page-object переменные. И переменные с входными данными, для различных тестов.
 Variables       ${EXECDIR}${/}page_objects/Elements.py
+Variables       ${EXECDIR}${/}page_objects/Variables.py
 
 *** Variables ***
 # Создаем переменную базового url, для данного теста.

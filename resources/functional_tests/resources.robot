@@ -19,6 +19,9 @@ Variables       ${EXECDIR}${/}variables/Variables.py
 *** Variables ***
 # Создаем переменную базового url, для данного теста.
 ${url_ui}      https://translate.google.com/
+${SELENOID_SERVER}      http://localhost:4444/wd/hub/
+&{selenoid:options}         enableVNC=${True}       enableVideo=${False}
+&{desired_caps}    selenoid:options=&{selenoid:options}      screenResolution=1920x1080x24        acceptInsecureCerts = true
 
 
 *** Keywords ***
@@ -28,7 +31,9 @@ ${url_ui}      https://translate.google.com/
 # Открываем браузер.
 Open browser on the page
     [Arguments]     ${url}      ${type_browsers}
-    Open Browser    ${url}      browser=${type_browsers}
+    # Open Browser    ${url}      browser=${type_browsers}
+    # log to console    ${desired_caps}["selenoid:options"][enableVNC]
+    Open Browser    ${url}      ${type_browsers}      remote_url=${SELENOID_SERVER}     desired_capabilities=&{desired_caps}
     #Set Window Size     1600	900
     Maximize Browser Window
     Set Suite Variable     ${name_browsers}    ${type_browsers}

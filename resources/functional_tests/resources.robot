@@ -32,7 +32,6 @@ ${SELENOID_SERVER}      http://localhost:4444/wd/hub/
 Open browser on the page
     [Arguments]     ${url}      ${type_browsers}
     # Open Browser    ${url}      browser=${type_browsers}
-    # log to console    ${desired_caps}["selenoid:options"][enableVNC]
     Open Browser    ${url}      ${type_browsers}      remote_url=${SELENOID_SERVER}     desired_capabilities=&{desired_caps}
     #Set Window Size     1600	900
     Maximize Browser Window

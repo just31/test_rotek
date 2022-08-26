@@ -1,4 +1,4 @@
-selenoid_url: 'http://192.168.24.100:4444/wd/hub'
+selenoid_url: 'http://localhost:4444/wd/hub/'
 
 selenoid_browsers:
   - 'chrome'
